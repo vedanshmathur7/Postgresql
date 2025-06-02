@@ -75,17 +75,37 @@ values
 ('Rohan','Mehra', 'Bengaluru', 'rohan.mehra@example.com', 2, current_date, 52000.00);
 select * from employees;
 
--- 2. Update City of an Employee
+-- 2. Updating the city of an Employee
 update employees
 set city = 'Jaipur'
 where fname = 'Rohan'; 
 select * from employees;
 
--- 3. Delete Employee Where fname = 'Suman' 
+-- 3. Deleting employee where fname = 'Suman' 
 delete from employee_project 
 where emp_id = 4;
 delete from employees 
 where emp_id = 4;
 select * from employees;
 select * from employee_project;
--- violating because 
+
+-- 4. Showing employees where city contains 'i' 
+select * from employees
+where city like '%i%';
+
+-- 5. Employees with salary between 45k and 50k
+select * from employees 
+where salary between 45000 and 50000;
+
+-- 6. Departments in alphabetical order 
+select * from departments 
+order by dept_name;
+
+-- 7. Distinct city names from employees
+select distinct city from employees;
+
+-- 8. Average salary of all employees
+select avg(salary) as average_salary from employees;
+
+-- 9. Total salary (department-wise)
+select 
