@@ -107,5 +107,23 @@ select distinct city from employees;
 -- 8. Average salary of all employees
 select avg(salary) as average_salary from employees;
 
--- 9. Total salary (department-wise)
-select 
+-- 9. Uppercasing fnames of all the employees 
+select upper(fname) as upper_fname from employees;
+
+-- 10. Extracting domain from the emails 
+select email, substring (email from position ('@' in email)+1) as domain from employees;
+
+-- 11. Adding column 'Gender' to employees
+alter table employees 
+add column gender varchar (10);
+select * from employees;
+
+-- 12. Changing the size of column 'city'
+alter table employees 
+alter column city
+set data type varchar (150);
+select * from employees;
+
+-- 13. Showing top 3 highest paid employees
+select * from employees 
+order by salary desc limit 3;
