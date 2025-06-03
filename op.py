@@ -3,7 +3,7 @@ import psycopg2
 hostname = 'localhost'
 database = 'op'
 username = 'postgres'
-pwd = '1237'
+pwd = 1237
 port_id = 5432
 cur = None
 conn = None
@@ -31,6 +31,7 @@ try:
         );
     """)
     conn.commit()
+
 
 
     while True:
@@ -72,7 +73,6 @@ try:
 
         elif choice == '4':
             emp_id = int(input("Enter employee id to delete: "))
-            cur.execute("Delete from employee_project where emp_id = %s", (emp_id,))
             cur.execute("Delete from employees where emp_id = %s", (emp_id,))
             conn.commit()
             print("Employee deleted successfully")
