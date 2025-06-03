@@ -17,9 +17,9 @@ try:
         password = pwd,
         port = port_id
     )
-    cur = conn.cursor()
+    cur = conn.cursor() #creating cursor from the dtb conn
 
-    # Dropping tables if they exist to avoid "relation already exists" error during creation
+    # dropping tables if they exist to avoid "relation already exists" error during creation
     cur.execute("drop table if exists employee_project;")
     cur.execute("drop table if exists projects;")
     cur.execute("drop table if exists employees;")
