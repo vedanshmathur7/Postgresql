@@ -34,55 +34,55 @@ try:
 
 
     while True:
-        print("\n--- employee table menu ---")
-        print("1. add new employee")
-        print("2. view all employees")
-        print("3. update employee city")
-        print("4. delete an employee")
-        print("5. exit")
+        print("\n--- Employee table menu ---")
+        print("1. Add new employee")
+        print("2. View all employees")
+        print("3. Update employee city")
+        print("4. Delete an employee")
+        print("5. Exit")
 
         choice = input("enter your choice (1-5): ")
 
         if choice == '1':
-            fname = input("enter first name: ")
-            lname = input("enter last name: ")
-            city = input("enter city: ")
-            email = input("enter email: ")
-            dept_id = int(input("enter department id: "))
-            salary = float(input("enter salary: "))
+            fname = input("Enter first name: ")
+            lname = input("Enter last name: ")
+            city = input("Enter city: ")
+            email = input("Enter email: ")
+            dept_id = int(input("Enter department id: "))
+            salary = float(input("Enter salary: "))
             cur.execute("""
                 insert into employees (fname, lname, city, email, dept_id, salary)
                 values (%s, %s, %s, %s, %s, %s)
             """, (fname, lname, city, email, dept_id, salary))
             conn.commit()
-            print("employee added successfully")
+            print("Employee added successfully! ")
 
         elif choice == '2':
             cur.execute("select * from employees")
-            print("\n--- all employees ---")
+            print("\n--- All employees ---")
             for i in cur.fetchall():
                 print(i)
 
         elif choice == '3':
-            emp_id = int(input("enter employee id to update: "))
-            new_city = input("enter new city: ")
-            cur.execute("update employees set city = %s where emp_id = %s", (new_city, emp_id))
+            emp_id = int(input("Enter employee id to update: "))
+            new_city = input("Enter new city: ")
+            cur.execute("Update employees set city = %s where emp_id = %s", (new_city, emp_id))
             conn.commit()
-            print("city updated successfully")
+            print("City updated successfully")
 
         elif choice == '4':
-            emp_id = int(input("enter employee id to delete: "))
-            cur.execute("delete from employee_project where emp_id = %s", (emp_id,))
-            cur.execute("delete from employees where emp_id = %s", (emp_id,))
+            emp_id = int(input("Enter employee id to delete: "))
+            cur.execute("Delete from employee_project where emp_id = %s", (emp_id,))
+            cur.execute("Delete from employees where emp_id = %s", (emp_id,))
             conn.commit()
-            print("employee deleted successfully")
+            print("Employee deleted successfully")
 
         elif choice == '5':
-            print("exiting...")
+            print("Exiting...")
             break
 
         else:
-            print("invalid choice, try again")
+            print("Invalid choice, try again")
 
 except Exception as error:
     print("error:", error)
